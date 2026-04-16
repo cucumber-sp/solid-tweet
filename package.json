@@ -1,8 +1,27 @@
 {
   "name": "solid-tweet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Embed tweets in your Solid.js app. A Solid port of react-tweet.",
   "license": "MIT",
+  "author": "cucumber-sp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cucumber-sp/solid-tweet.git"
+  },
+  "homepage": "https://github.com/cucumber-sp/solid-tweet#readme",
+  "bugs": {
+    "url": "https://github.com/cucumber-sp/solid-tweet/issues"
+  },
+  "keywords": [
+    "solid",
+    "solidjs",
+    "solid-js",
+    "tweet",
+    "twitter",
+    "x",
+    "embed",
+    "component"
+  ],
   "type": "module",
   "main": "./dist/index/index.js",
   "module": "./dist/index/index.js",
