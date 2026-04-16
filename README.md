@@ -16,14 +16,15 @@ npm install solid-tweet solid-js
 
 ```tsx
 import { Tweet } from 'solid-tweet'
-import 'solid-tweet/solid-tweet.css'
 
 function App() {
   return <Tweet id="1628832338187636740" />
 }
 ```
 
-That's it. The component fetches the tweet from Twitter's syndication API and renders it with the same styling as an embedded tweet.
+That's it. CSS is included automatically — no separate import needed. The component fetches the tweet from Twitter's syndication API and renders it with the same styling as an embedded tweet.
+
+> If your bundler tree-shakes CSS side effects, add `import 'solid-tweet/solid-tweet.css'` explicitly.
 
 ## Props
 

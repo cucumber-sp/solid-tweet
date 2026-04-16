@@ -1,6 +1,5 @@
 import { createSignal, Show } from 'solid-js'
 import { Tweet } from 'solid-tweet'
-import 'solid-tweet/solid-tweet.css'
 
 export default function App() {
   const [input, setInput] = createSignal('')

@@ -29,6 +29,9 @@
     },
     "./solid-tweet.css": "./src/solid-tweet.css"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist",
     "src/solid-tweet.css"
