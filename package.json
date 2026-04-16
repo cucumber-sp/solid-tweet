@@ -1,0 +1,51 @@
+{
+  "name": "solid-tweet",
+  "version": "0.1.0",
+  "description": "Embed tweets in your Solid.js app. A Solid port of react-tweet.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index/index.js",
+  "module": "./dist/index/index.js",
+  "types": "./dist/index/index.d.ts",
+  "exports": {
+    ".": {
+      "solid": {
+        "development": "./dist/index/dev.js",
+        "import": {
+          "types": "./dist/index/index.d.ts",
+          "default": "./dist/index/index.js"
+        }
+      },
+      "import": {
+        "types": "./dist/index/index.d.ts",
+        "default": "./dist/index/index.js"
+      }
+    },
+    "./api": {
+      "import": {
+        "types": "./dist/api/index.d.ts",
+        "default": "./dist/api/index.js"
+      }
+    },
+    "./solid-tweet.css": "./src/solid-tweet.css"
+  },
+  "files": [
+    "dist",
+    "src/solid-tweet.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "solid-js": "^1.9.12",
+    "tsup": "^8.5.1",
+    "tsup-preset-solid": "^2.2.0",
+    "typescript": "^6.0.2"
+  }
+}
