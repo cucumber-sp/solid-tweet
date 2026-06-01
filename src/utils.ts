@@ -122,12 +122,16 @@ function getEntities(tweet: TweetBase): Entity[] {
     { indices: tweet.display_text_range, type: 'text' },
   ]
 
-  addEntities(result, 'hashtag', tweet.entities.hashtags)
-  addEntities(result, 'mention', tweet.entities.user_mentions)
-  addEntities(result, 'url', tweet.entities.urls)
-  addEntities(result, 'symbol', tweet.entities.symbols)
-  if (tweet.entities.media) {
-    addEntities(result, 'media', tweet.entities.media)
+  // The syndication API omits empty entity arrays for some (typically newer)
+  // tweets, so `entities` and its keys may be undefined. Guard every access.
+  const entities = tweet.entities ?? ({} as Partial<TweetBase['entities']>)
+
+  addEntities(result, 'hashtag', entities.hashtags)
+  addEntities(result, 'mention', entities.user_mentions)
+  addEntities(result, 'url', entities.urls)
+  addEntities(result, 'symbol', entities.symbols)
+  if (entities.media) {
+    addEntities(result, 'media', entities.media)
   }
   fixRange(tweet, result)
 
@@ -158,7 +162,7 @@ function getEntities(tweet: TweetBase): Entity[] {
 function addEntities(
   result: EntityWithType[],
   type: EntityWithType['type'],
-  entities: TweetEntity[]
+  entities: TweetEntity[] = []
 ) {
   for (const entity of entities) {
     for (const [i, item] of result.entries()) {
@@ -196,7 +200,7 @@ function addEntities(
  */
 function fixRange(tweet: TweetBase, entities: EntityWithType[]) {
   if (
-    tweet.entities.media &&
+    tweet.entities?.media?.[0] &&
     tweet.entities.media[0].indices[0] < tweet.display_text_range[1]
   ) {
     tweet.display_text_range[1] = tweet.entities.media[0].indices[0]
